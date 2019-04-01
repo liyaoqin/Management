@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.science.admin.mapper.CdprojectMapper">
+    <select id="getCdprojectList" resultType="com.science.admin.pojo.Dnotice">
+SELECT
+  d.id,
+  d.title,
+  d.content,
+  d.declaration,
+  d.status,
+  d.created,
+  d.updated
+FROM
+  dnotice d  LEFT JOIN project p
+    ON (d.id = p.dnotice_id)
+WHERE
+  d.status=0 and
+  p.dnotice_id  IS  NULL
+    </select>
+</mapper>
